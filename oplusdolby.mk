@@ -13,6 +13,10 @@ PRODUCT_COPY_FILES += \
     $(DOLBY_PATH)/configs/media/media_codecs_c2_dolby_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2_dolby_audio.xml \
     $(DOLBY_PATH)/configs/dolby/multimedia_dolby_dax_default.xml:$(TARGET_COPY_OUT_ODM)/etc/dolby/multimedia_dolby_dax_default.xml
 
+# Sepolicy
+BOARD_VENDOR_SEPOLICY_DIRS += \
+    $(DOLBY_PATH)/sepolicy/vendor
+
 # Properties
 TARGET_ODM_PROP += $(DOLBY_PATH)/odm.prop
 
