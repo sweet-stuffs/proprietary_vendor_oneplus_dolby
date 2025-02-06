@@ -10,3 +10,6 @@ DOLBY_PATH := device/oneplus/dolby
 
 # Properties
 TARGET_ODM_PROP += $(DOLBY_PATH)/odm.prop
+
+# Sepolicy
+BOARD_VENDOR_SEPOLICY_DIRS += $(DOLBY_PATH)/sepolicy/vendor
