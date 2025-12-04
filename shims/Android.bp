@@ -9,3 +9,10 @@ cc_library_shared {
     shared_libs: ["libbase"],
     device_specific: true,
 }
+
+cc_library_shared {
+    name: "dolbycodec_shim",
+    srcs: ["dolbycodec_shim.cpp"],
+    shared_libs: ["libutils"],
+    device_specific: true,
+}
