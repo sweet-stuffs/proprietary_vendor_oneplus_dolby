@@ -13,10 +13,6 @@ from extract_utils.main import (
     ExtractUtilsModule,
 )
 
-namespace_imports = [
-    'device/oneplus/dolby',
-]
-
 blob_fixups: blob_fixups_user_type = {
     'odm/bin/hw/vendor.dolby_sp.media.c2@1.0-service': blob_fixup()
         .replace_needed('libcodec2_hidl@1.0.so', 'libcodec2_hidl@1.0_sp.so')
@@ -53,7 +49,7 @@ module = ExtractUtilsModule(
     'dolby',
     'oneplus',
     blob_fixups=blob_fixups,
-    namespace_imports=namespace_imports,
+    device_rel_path='vendor/oneplus/dolby',
 )
 
 if __name__ == '__main__':
