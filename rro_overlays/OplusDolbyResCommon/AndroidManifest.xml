@@ -9,5 +9,5 @@
     <overlay
         android:isStatic="true"
         android:priority="300"
-        android:targetPackage="co.aospa.dolby.oplus" />
+        android:targetPackage="co.aospa.dolby" />
 </manifest>
