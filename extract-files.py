@@ -9,9 +9,25 @@ from extract_utils.main import (
     ExtractUtilsModule,
 )
 
+from extract_utils.fixups_blob import (
+    blob_fixup,
+    blob_fixups_user_type,
+)
+
+blob_fixups: blob_fixups_user_type = {
+    'odm/etc/vintf/manifest/vendor.dolby.media.c2@1.0-service.xml': blob_fixup()
+        .regex_replace('            <instance>dolby</instance>\n', '')
+        .regex_replace('            <instance>oplussoftware</instance>\n', '')
+        .regex_replace('        <fqname>@1.0::IComponentStore/software</fqname>\n', '')
+        .regex_replace('        <fqname>@1.1::IComponentStore/software</fqname>\n', '')
+        .regex_replace('        <fqname>@1.2::IComponentStore/software</fqname>\n', '')
+        .regex_replace('        <fqname>@1.0::IComponentStore/default2</fqname>\n', ''),
+}  # fmt: skip
+
 module = ExtractUtilsModule(
     'dolby',
     'oneplus',
+    blob_fixups=blob_fixups,
     device_rel_path='vendor/oneplus/dolby',
 )
 
