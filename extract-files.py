@@ -22,6 +22,20 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('        <fqname>@1.1::IComponentStore/software</fqname>\n', '')
         .regex_replace('        <fqname>@1.2::IComponentStore/software</fqname>\n', '')
         .regex_replace('        <fqname>@1.0::IComponentStore/default2</fqname>\n', ''),
+    (
+        'odm/lib/libdlbdsservice_sp.so',
+        'odm/lib/libdlbpreg_sp.so',
+        'odm/lib/soundfx/libdlbvol_sp.so',
+        'odm/lib/soundfx/libswdap_sp.so',
+        'odm/lib/soundfx/libswspatializer.so',
+        'odm/lib64/libdlbdsservice_sp.so',
+        'odm/lib64/libdlbpreg_sp.so',
+        'odm/lib64/soundfx/libdlbvol_sp.so',
+        'odm/lib64/soundfx/libswdap_sp.so',
+        'odm/lib64/soundfx/libswspatializer.so',
+        'odm/lib64/libcodec2_soft_ac4dec_sp.so',
+        'odm/lib64/libcodec2_soft_ddpdec_sp.so'
+    ): blob_fixup().replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
