@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from OnePlus 11 CPH2447_16.0.3.500(EX01)
+# All unpinned blobs below are extracted from OnePlus 11 CPH2449_16.0.2.400(EX01)
 
 odm/bin/hw/vendor.dolby_sp.hardware.dmssp@2.0-service
 odm/bin/hw/vendor.dolby_sp.media.c2@1.0-service
