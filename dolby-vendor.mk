@@ -21,9 +21,14 @@ PRODUCT_PACKAGES += \
     libswspatializer \
     vendor.dolby_sp.hardware.dmssp@2.0-impl \
     vendor.dolby_sp.hardware.dmssp@2.0 \
+    libcodec2_hidl@1.0_sp \
+    libcodec2_hidl_plugin_sp \
     libcodec2_soft_ac4dec_sp \
+    libcodec2_soft_common_sp \
     libcodec2_soft_ddpdec_sp \
     libcodec2_store_dolby_sp \
+    libcodec2_vndk_sp \
+    libui_sp \
     vendor.dolby.hardware.dms.xml \
     vendor.dolby.media.c2@1.0-service.xml \
     vendor.dolby_sp.hardware.dmssp@2.0-service \
