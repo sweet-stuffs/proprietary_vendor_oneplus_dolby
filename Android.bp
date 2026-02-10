@@ -391,62 +391,6 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libswspatializer",
-    owner: "oneplus",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm: {
-            srcs: [
-                "proprietary/odm/lib/soundfx/libswspatializer.so",
-            ],
-            shared_libs: [
-                "liblog",
-                "libutils",
-                "libcutils",
-                "libaudioutils",
-                "libdapparamstorage_sp",
-                "libspatializerparamstorage",
-                "libhidlbase",
-                "libstagefright_foundation-v33",
-                "libdlbpreg_sp",
-                "vendor.dolby_sp.hardware.dmssp@2.0",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-        android_arm64: {
-            srcs: [
-                "proprietary/odm/lib64/soundfx/libswspatializer.so",
-            ],
-            shared_libs: [
-                "liblog",
-                "libutils",
-                "libcutils",
-                "libaudioutils",
-                "libdapparamstorage_sp",
-                "libspatializerparamstorage",
-                "libhidlbase",
-                "libstagefright_foundation-v33",
-                "libdlbpreg_sp",
-                "vendor.dolby_sp.hardware.dmssp@2.0",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "both",
-    relative_install_path: "soundfx",
-    prefer: true,
-    device_specific: true,
-}
-
-cc_prebuilt_library_shared {
     name: "vendor.dolby_sp.hardware.dmssp@2.0-impl",
     owner: "oneplus",
     strip: {
@@ -548,6 +492,8 @@ cc_prebuilt_library_shared {
                 "proprietary/odm/lib64/libcodec2_hidl@1.0_sp.so",
             ],
             shared_libs: [
+                "dolbycodec_shim",
+                "libbase_WriteStringToFd_shim",
                 "android.hardware.graphics.bufferqueue@1.0",
                 "android.hardware.graphics.bufferqueue@2.0",
                 "android.hardware.graphics.common@1.0",

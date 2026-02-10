@@ -18,7 +18,6 @@ PRODUCT_PACKAGES += \
     libdlbvol_sp \
     libswdap_sp \
     libswgamedap_sp \
-    libswspatializer \
     vendor.dolby_sp.hardware.dmssp@2.0-impl \
     vendor.dolby_sp.hardware.dmssp@2.0 \
     libcodec2_hidl@1.0_sp \
