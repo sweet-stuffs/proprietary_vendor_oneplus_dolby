@@ -26,13 +26,11 @@ odm/lib64/libdlbdsservice_sp.so
 odm/lib64/libdlbpreg_sp.so
 odm/lib64/libspatializerparamstorage.so
 odm/lib64/soundfx/libdlbvol_sp.so
-odm/lib64/soundfx/libswdap_sp.so
 odm/lib64/soundfx/libswgamedap_sp.so
 odm/lib64/soundfx/libswspatializer.so
 odm/lib64/vendor.dolby_sp.hardware.dmssp@2.0-impl.so
 odm/lib64/vendor.dolby_sp.hardware.dmssp@2.0.so
-odm/lib64/libcodec2_hidl_plugin.so:odm/lib64/libcodec2_hidl_plugin_sp.so;FIX_SONAME
-odm/lib64/libcodec2_hidl@1.0.so:odm/lib64/libcodec2_hidl@1.0_sp.so;FIX_SONAME
-odm/lib64/libcodec2_soft_common.so:odm/lib64/libcodec2_soft_common_sp.so;FIX_SONAME
-odm/lib64/libui.so:odm/lib64/libui_sp.so;FIX_SONAME
-vendor/lib64/libcodec2_vndk.so:odm/lib64/libcodec2_vndk_sp.so;FIX_SONAME
+
+# test 
+
+odm/lib64/soundfx/libswdap_sp.so|b6398cb148025ad1ba05e20998ebcebe04fd7d2d|532b0843d2491a003c8aa429dd370eae552910f0

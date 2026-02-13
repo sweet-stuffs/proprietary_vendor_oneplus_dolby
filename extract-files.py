@@ -15,27 +15,6 @@ from extract_utils.fixups_blob import (
 )
 
 blob_fixups: blob_fixups_user_type = {
-    'odm/bin/hw/vendor.dolby_sp.media.c2@1.0-service': blob_fixup()
-        .replace_needed('libcodec2_hidl@1.0.so', 'libcodec2_hidl@1.0_sp.so')
-        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk_sp.so'),
-    'odm/lib64/libcodec2_store_dolby_sp.so': blob_fixup()
-        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk_sp.so'),
-    ('odm/lib64/libcodec2_soft_ac4dec_sp.so', 'odm/lib64/libcodec2_soft_ddpdec_sp.so'): blob_fixup()
-        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk_sp.so')
-        .replace_needed('libcodec2_soft_common.so', 'libcodec2_soft_common_sp.so')
-        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
-    ('odm/lib64/libcodec2_soft_common_sp.so', 'odm/lib64/libcodec2_hidl_plugin_sp.so'): blob_fixup()
-        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk_sp.so')
-        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
-    'odm/lib64/libcodec2_vndk_sp.so': blob_fixup()
-        .replace_needed('libui.so', 'libui_sp.so')
-        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
-    'odm/lib64/libcodec2_hidl@1.0_sp.so': blob_fixup()
-        .replace_needed('libcodec2_hidl_plugin.so', 'libcodec2_hidl_plugin_sp.so')
-        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk_sp.so'),
-    'odm/lib64/libui_sp.so': blob_fixup()
-        .replace_needed('android.hardware.graphics.common-V3-ndk.so', 'android.hardware.graphics.common-V7-ndk.so')
-        .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so'),
     'odm/etc/vintf/manifest/vendor.dolby.media.c2@1.0-service.xml': blob_fixup()
         .regex_replace('            <instance>dolby</instance>\n', '')
         .regex_replace('            <instance>oplussoftware</instance>\n', '')
@@ -52,11 +31,21 @@ blob_fixups: blob_fixups_user_type = {
         'odm/lib64/libdlbdsservice_sp.so',
         'odm/lib64/libdlbpreg_sp.so',
         'odm/lib64/soundfx/libdlbvol_sp.so',
-        'odm/lib64/soundfx/libswdap_sp.so',
         'odm/lib64/soundfx/libswspatializer.so',
         'odm/lib64/libcodec2_soft_ac4dec_sp.so',
         'odm/lib64/libcodec2_soft_ddpdec_sp.so'
     ): blob_fixup().replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
+    # < 00146c60: 1f00 0071 e003 0091 f317 9f1a 4162 0494  ...q........Ab..
+    # < 00146d80: 0900 0012 8902 090b 3f01 086b ca01 0054  ........?..k...T
+    # ---
+    # > 00146c60: 1f00 0071 e003 0091 1300 8052 4162 0494  ...q.......RAb..
+    # > 00146d80: 0900 0012 8902 090b 3f01 086b 0e00 0014  ........?..k....
+  'odm/lib64/soundfx/libswdap_sp.so': blob_fixup()
+    .binary_regex_replace(b'\x1f\x00\x00\x71\xe0\x03\x00\x91\xf3\x17\x9f\x1a\x41\x62\x04\x94',
+                          b'\x1f\x00\x00\x71\xe0\x03\x00\x91\x13\x00\x80\x52\x41\x62\x04\x94')
+    .binary_regex_replace(rb'\x09\x00\x00\x12\x89\x02\x09\x0b\x3f\x01\x08\x6b\xca\x01\x00\x54',
+                          b'\x09\x00\x00\x12\x89\x02\x09\x0b\x3f\x01\x08\x6b\x0e\x00\x00\x14')
+    .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
